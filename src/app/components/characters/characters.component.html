@@ -1,0 +1,17 @@
+<div class="container">
+    <div *ngFor="let ch  of heroList; let index = index;" class="card">
+        <div class="hero-header">
+            <div><img src="../../../assets/images/sw_logo_stacked-336c62367939.png" alt=""></div>
+        </div>
+        <div class="hero-content">
+            <span>Name: {{ch.name}}</span>
+            <span>Height: {{ch.height}}</span>
+            <span>Gender: {{ch.gender}}</span>
+            <span>Hair color: {{ch.hair_color}}</span>
+            <span>Skin color: {{ch.skin_color}}</span>
+
+
+            <fa-icon class='icon' [icon]="faStar" (click)="addTofavorite(index, ch.name)"   [class.icon-yellow]="favorites.includes(index) || myFavorites.includes(ch.name)"></fa-icon>
+        </div>
+    </div>
+</div>

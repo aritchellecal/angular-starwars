@@ -1,0 +1,66 @@
+
+h3 {
+    color:#524747 ;
+}
+.container{
+    display: flex;
+    box-sizing: border-box;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    font-family: sans-serif;
+}
+
+.card {
+    background-color: #ebebeb;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+
+}
+.icon {
+    color: #fff;
+    font-size:18px;
+    position: absolute;
+    right: 24px;
+    cursor: pointer;
+}
+
+.hero-header {
+    display: flex;
+    flex-direction: row;
+    height: 200px;
+    width: 300px;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-header > div {
+    display: flex;
+    flex-grow: 1;
+    text-align: center;
+}
+.hero-header > div > h3{
+   padding-left: 20px;;
+}
+.hero-content{
+    display: block;
+    height: 120px;
+    padding-top: 10px;
+    flex-grow: 1;
+    background: linear-gradient(0deg, rgba(2,1,22,1) 0%, rgba(36,37,37,1) 50%, rgba(2,1,22,1) 100%);
+    position: relative;
+    padding-bottom: 20px;
+}
+.hero-content > span {
+    display: block;
+    padding: 0 12px;
+    font-size: 18px;
+    color: #fff;
+}
+.icon-yellow {
+    color: yellow;
+}
+.icon-favorites {
+    color: yellow;
+}
