@@ -1,9 +1,10 @@
-import { async } from '@angular/core/testing';
+import { Key } from 'protractor';
+import { map } from 'rxjs/operators';
 import { CharactersService } from './../../services/characters.service';
 import { Component, OnInit } from '@angular/core';
-import { Character } from 'src/app/models/character.model';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
-import { map } from 'rxjs/operators';
+import { identifierModuleUrl } from '@angular/compiler';
+
 
 @Component({
   selector: 'app-characters',
@@ -17,44 +18,68 @@ export class CharactersComponent implements OnInit {
   faStar = faStar;
   isFavorite = false;
   heroList: any[];
-  myFavorites: any[];
+  myFavorites: any;
+  favoriteCharacter:string[];
+  results:any[]=[];
+
   constructor(private character: CharactersService) {
   }
 
   ngOnInit() {
     this.fetchCharacter();
-    this.getAllFavorites();
+    this.getFavorites();
   }
 
   fetchCharacter() {
     this.character.getCharacter().subscribe(res => {
     this.heroList = res;
+
+    console.log(res)
+    
     });
+    
   }
+  getFavorites() {
+  
+    this.myFavorites = {...localStorage};
 
-  getAllFavorites() {
-    const favoriteCharacters = {...localStorage};
-
-    this.myFavorites = Object.keys(favoriteCharacters)
+     const ch=Object.keys(this.myFavorites)
       .reduce((value, key) => {
-        value[key] = favoriteCharacters[key];
-        return value; }, []);
+        value[key] = this.myFavorites[key];
+        this.favorites.push(+key)
+        return value;}, []);
   }
 
-  addTofavorite(index: number, chName: string) {
+  
+  addTofavorite(index: number) {
 
-    const favoriteCharacter = chName;
+    this.favoriteCharacter = this.heroList[index];
 
+    // this.results  = Object.keys(this.favoriteCharacter)
+    //       .map(key => this.favoriteCharacter[key]);
+
+        //   for(var item in this.favoriteCharacter){
+        //     if(this.favoriteCharacter.hasOwnProperty(item)){
+        //       this.results.push(this.favoriteCharacter[item]);
+        //     } 
+        // }
+
+          console.log(this.results)
+          
+          localStorage.setItem('characters', JSON.stringify(this.favoriteCharacter));
+    
     if (this.favorites.includes(index)) {
       const idx = this.favorites.indexOf(index);
       this.favorites.splice(idx, 1);
+
       localStorage.removeItem(index.toString());
-      this.getAllFavorites();
+      this.getFavorites();
     } else {
       this.favorites.push(index);
-      localStorage.setItem(index.toString(), favoriteCharacter);
+      // localStorage.setItem('characters', JSON.stringify(this.results));
     }
+
+
+
   }
-
-
 }
