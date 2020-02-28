@@ -18,9 +18,4 @@ export class CharactersService {
     return this.http.get<Character[]>(this.url + /people/)
     .pipe(map((res: any) => res.results ));
   }
-
-  // loadData = () => {
-  //   return this.http.get(this.url + /people/);
-  // }
-
 }
