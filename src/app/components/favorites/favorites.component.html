@@ -1,4 +1,5 @@
 <div class="container">
+    <div *ngIf="empty">You have no favorite Character</div>
     <div *ngFor="let ch  of favorites; let index = index;" class="card">
         <div class="hero-header">
             <div><img src="../../../assets/images/sw_logo_stacked-336c62367939.png" alt=""></div>
@@ -9,7 +10,8 @@
             <span>Gender: {{ch.gender}}</span>
             <span>Hair color: {{ch.hair_color}}</span>
             <span>Skin color: {{ch.skin_color}}</span>
-            <fa-icon class='icon' [icon]="faStar" (click)='remove(index)' [class.icon-yellow]="ch.favorite"></fa-icon>
+            <fa-icon class='icon' [icon]="faStar" (click)='remove(ch.name)' [class.icon-yellow]="ch.favorite"></fa-icon>
         </div>
     </div>
+
 </div>

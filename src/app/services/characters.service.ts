@@ -15,11 +15,11 @@ export class CharactersService {
   constructor(private http: HttpClient) { }
 
   getCharacter(): Observable<Character[]> {
-    const characters = JSON.parse(localStorage.getItem('çharacters'));
+    const characters = JSON.parse(localStorage.getItem('characters'));
     if (!characters) {
          return this.http.get<Character[]>(this.url + /people/)
             .pipe(map((res: any) => res.results ),tap(res => {
-              localStorage.setItem('çharacters', JSON.stringify(res));
+              localStorage.setItem('characters', JSON.stringify(res));
             }));
     } else {
      return of(characters);
@@ -27,7 +27,7 @@ export class CharactersService {
   }
 
   save(characters) {
-     localStorage.setItem('çharacters', JSON.stringify(characters));
+     localStorage.setItem('characters', JSON.stringify(characters));
   }
 
   getFavorites() {
