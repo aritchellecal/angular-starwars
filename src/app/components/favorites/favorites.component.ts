@@ -10,12 +10,29 @@ import { CharactersService } from 'src/app/services/characters.service';
 export class FavoritesComponent implements OnInit {
   faStar = faStar;
   favorites = [];
+  characters: any[] = [];
   constructor(private character: CharactersService) { }
 
   ngOnInit() {
-  this.character.getFavorites().subscribe( favorites => {
-    this.favorites = favorites;
-  });
+    this.favoriteCharacter();
+  }
+  favoriteCharacter() {
+    this.character.getFavorites().subscribe( favorites => {
+      this.favorites = favorites;
+    });
+    this.fetchCharacter();
+  }
+  fetchCharacter() {
+    this.character.getCharacter().subscribe(res => {
+        this.characters = res; });
+  }
+
+  remove(index: number) {
+    console.log(index);
+    this.favorites[index].favorite = !this.favorites[index].favorite;
+    this.character.save(this.characters);
+    this.favoriteCharacter();
+
   }
 
 }

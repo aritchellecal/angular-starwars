@@ -9,7 +9,7 @@
             <span>Gender: {{ch.gender}}</span>
             <span>Hair color: {{ch.hair_color}}</span>
             <span>Skin color: {{ch.skin_color}}</span>
-            <!-- <fa-icon class='icon' [icon]="faStar" (click)="addTofavorite(index)"   [class.icon-yellow]="favorites.includes(index)"></fa-icon> -->
+            <fa-icon class='icon' [icon]="faStar" (click)='remove(index)' [class.icon-yellow]="ch.favorite"></fa-icon>
         </div>
     </div>
 </div>

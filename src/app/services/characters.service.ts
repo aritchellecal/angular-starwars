@@ -14,9 +14,6 @@ export class CharactersService {
 
   constructor(private http: HttpClient) { }
 
-
-
-
   getCharacter(): Observable<Character[]> {
     const characters = JSON.parse(localStorage.getItem('çharacters'));
     if (!characters) {
