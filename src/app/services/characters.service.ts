@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { Character } from '../models/character.model';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 
 
 @Injectable({
@@ -14,8 +14,27 @@ export class CharactersService {
 
   constructor(private http: HttpClient) { }
 
+
+
+
   getCharacter(): Observable<Character[]> {
-    return this.http.get<Character[]>(this.url + /people/)
-    .pipe(map((res: any) => res.results ));
+    const characters = JSON.parse(localStorage.getItem('çharacters'));
+    if (!characters) {
+         return this.http.get<Character[]>(this.url + /people/)
+            .pipe(map((res: any) => res.results ),tap(res => {
+              localStorage.setItem('çharacters', JSON.stringify(res));
+            }));
+    } else {
+     return of(characters);
+    }
   }
+
+  save(characters) {
+     localStorage.setItem('çharacters', JSON.stringify(characters));
+  }
+
+  getFavorites() {
+    return this.getCharacter().pipe(map((characters: any[]) => characters.filter(item => item.favorite)));
+  }
+
 }

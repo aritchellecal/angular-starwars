@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
 import { faStar } from '@fortawesome/free-solid-svg-icons';
-import { Key } from 'protractor';
+import { CharactersService } from 'src/app/services/characters.service';
 
 @Component({
   selector: 'app-favorites',
@@ -9,31 +8,14 @@ import { Key } from 'protractor';
   styleUrls: ['./favorites.component.scss']
 })
 export class FavoritesComponent implements OnInit {
-  faStar=faStar;
-  favoriteCharacters:any;
-  myFavorites: any;
-  heroList: any[];
-  
-
-  constructor() { }
+  faStar = faStar;
+  favorites = [];
+  constructor(private character: CharactersService) { }
 
   ngOnInit() {
-    this.fetchFavorites();
+  this.character.getFavorites().subscribe( favorites => {
+    this.favorites = favorites;
+  });
   }
 
-  fetchFavorites() {
-
-    this.myFavorites = {localStorage};
-    // this.myFavorites=JSON.parse(localStorage.getItem('1'))
-    
-    console.log(this.myFavorites)
-
-    // console.log(JSON.parse(this.myFavorites))
-
-    // this.favoriteCharacters = Object.keys( this.myFavorites ).map((data)=>{
-    //   return [data, this.myFavorites [data]];
-    //   });
- 
-    }
-  
 }
