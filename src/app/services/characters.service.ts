@@ -18,7 +18,8 @@ export class CharactersService {
     const characters = JSON.parse(localStorage.getItem('characters'));
     if (!characters) {
          return this.http.get<Character[]>(`${this.url}/people/`)
-            .pipe(map((res: any) => res.results ),tap(res => {
+            .pipe(map((res: any) => res.results.slice(0,5))
+            ,tap(res => {
               localStorage.setItem('characters', JSON.stringify(res));
             }));
     } else {
