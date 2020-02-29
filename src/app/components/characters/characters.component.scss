@@ -1,6 +1,16 @@
-
+:host ::ng-deep div  {
+    height: 100vh;
+} 
 h3 {
     color:#524747 ;
+}
+.hero-header > div {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.993); 
 }
 .container{
     display: flex;
@@ -9,6 +19,7 @@ h3 {
     justify-content: center;
     align-items: center;
     font-family: sans-serif;
+    
 }
 
 .card {
@@ -16,7 +27,8 @@ h3 {
     margin: 10px;
     display: flex;
     flex-direction: column;
-
+    height: 350px;
+    position: relative;
 }
 .icon {
     color: #fff;
@@ -35,28 +47,35 @@ h3 {
     align-items: center;
 }
 
-.hero-header > div {
-    display: flex;
-    flex-grow: 1;
-    text-align: center;
-}
-.hero-header > div > h3{
-   padding-left: 20px;;
-}
+
+
 .hero-content{
+    padding-top: 8px;
     display: block;
     height: 120px;
-    padding-top: 10px;
     flex-grow: 1;
-    background: linear-gradient(0deg, rgba(2,1,22,1) 0%, rgba(36,37,37,1) 50%, rgba(2,1,22,1) 100%);
+    background: linear-gradient(38deg, rgb(3, 3, 3) 0%, rgba(0, 0, 0, 0.719) 50%, rgb(8, 8, 8) 100%);
     position: relative;
     padding-bottom: 20px;
+   
+}
+
+.favorite--color{
+    margin-top: 0;
+    position: relative;
+    width: calc(100% -20px);
+    height:6px;
+   
+}
+.span--color-favorite{
+    border-top: 3px solid rgba(202, 202, 6, 0.596);
+    transition: all 0.2s ease-in-out;
 }
 .hero-content > span {
     display: block;
     padding: 0 12px;
     font-size: 18px;
-    color: #fff;
+    color: rgba(255, 255, 255, 0.76);
 }
 .icon-yellow {
     color: yellow;

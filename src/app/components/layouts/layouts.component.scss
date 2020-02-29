@@ -27,6 +27,16 @@
   .active {
     background-color: #000;
   }
+
+  .bg-image{
+  
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../../../assets/images/bg.webp");
+    height: 50%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+  }
   @media screen and (max-width: 500px) {
     .navbar a {
       float: none;

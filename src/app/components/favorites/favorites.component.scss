@@ -41,6 +41,7 @@ h3 {
   width: 300px;
   justify-content: center;
   align-items: center;
+  background: rgba(0, 0, 0, 0.993);
 }
 
 .hero-header > div {
@@ -56,7 +57,7 @@ h3 {
   height: 120px;
   padding-top: 10px;
   flex-grow: 1;
-  background: linear-gradient(0deg, rgba(2,1,22,1) 0%, rgba(36,37,37,1) 50%, rgba(2,1,22,1) 100%);
+  background: linear-gradient(38deg, rgb(3, 3, 3) 0%, rgba(0, 0, 0, 0.719) 50%, rgb(8, 8, 8) 100%);
   position: relative;
   padding-bottom: 20px;
 }
@@ -64,7 +65,7 @@ h3 {
   display: block;
   padding: 0 12px;
   font-size: 18px;
-  color: #fff;
+  color: rgba(255, 255, 255, 0.76);
 }
 .icon-yellow {
   color: yellow;
