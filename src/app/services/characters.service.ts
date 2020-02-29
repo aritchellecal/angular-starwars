@@ -17,7 +17,7 @@ export class CharactersService {
   getCharacter(): Observable<Character[]> {
     const characters = JSON.parse(localStorage.getItem('characters'));
     if (!characters) {
-         return this.http.get<Character[]>(this.url + /people/)
+         return this.http.get<Character[]>(`${this.url}/people/`)
             .pipe(map((res: any) => res.results ),tap(res => {
               localStorage.setItem('characters', JSON.stringify(res));
             }));
